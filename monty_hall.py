@@ -1,4 +1,4 @@
-#tres opciones, una aleatoria gana, jugador elege 1 caja aleatoria, presentador abre 1, no la escogidfa , no la premiada, aleatoriamente jugador cambia o no cambia.Gana o no
+#tres opciones, una aleatoria gana, jugador elege 1 caja aleatoria, presentador abre 1, no la escogida , no la premiada, aleatoriamente jugador cambia o no cambia.Gana o no
 #gana con cambio x%, gana sin cambio x%,pierde con cambio x%,pierde sin cambio x%
 
 import random
@@ -31,13 +31,19 @@ class Concurso:
     gana_con_ch = 0
     pierde_sin_ch = 0
     pierde_con_ch = 0
-    interacciones = 0
+    cambio = 0
+    iteracciones = 0
 
     def __init__(self):
         pass
     
     def concursar(self,iteracciones):
         self.iteracciones = iteracciones
+        self.gana_sin_ch = 0
+        self.gana_con_ch = 0
+        self.pierde_sin_ch = 0
+        self.pierde_con_ch = 0
+        self.cambio = 0
 
         for i in range(0,iteracciones):
             self.puertas = [1,2,3]
@@ -55,7 +61,7 @@ class Concurso:
                 fase_final.append(eleccion_jugador)
                 fase_final.append(puerta_premio)
 
-            cambio = random.randint(0,1)
+                cambio = random.randint(0,1)
 
             if cambio == 0:
                 if eleccion_jugador == puerta_premio:
@@ -68,14 +74,14 @@ class Concurso:
                     self.gana_con_ch += 1
                 else:
                     self.pierde_con_ch += 1
-    
+
     def imprimir_resultados(self):
-        print(f"Cambiando la caja del jugador ha: \n -Ganado el {(self.gana_con_ch/self.interacciones)*100}% de las veces. -Perdido el {(self.pierde_con_ch/self.interacciones)*100}% de las veces.")
-        print(f"Manteniendo la caja del jugador ha: \n -Ganado el {(self.gana_sin_ch/self.interacciones)*100}% de las veces. -Perdido el {(self.pierde_sin_ch/self.interacciones)*100}% de las veces.")
+        print(f"Cambiando la caja del jugador ha: \n -Ganado el {round((self.gana_con_ch/(self.gana_con_ch + self.pierde_con_ch))*100,2)}% de las veces. -Perdido el {round((self.pierde_con_ch/(self.gana_con_ch + self.pierde_con_ch))*100,2)}% de las veces.")
+        print(f"Manteniendo la caja del jugador ha: \n -Ganado el {round((self.gana_sin_ch/(self.gana_sin_ch + self.pierde_sin_ch))*100,2)}% de las veces. -Perdido el {round((self.pierde_sin_ch/(self.gana_sin_ch + self.pierde_sin_ch))*100,2)}% de las veces.")
         
     
 concurso1 = Concurso()
-concurso1.concursar(100)
+concurso1.concursar(1000)
 concurso1.imprimir_resultados()
 
 
