@@ -1,7 +1,4 @@
 import math ; import sys
-
-
-
 '''
 Elabora un programa para el cálculo de el lanzamiento de un misil.
 
@@ -26,86 +23,77 @@ Hacer un menú que tenga las opciones de establecer los datos, consultarlos y re
 
 (se puede mantener el menú siempre corriendo con un "while True" por ejemplo)'''
 
-angulo = 0
-velocidad = 0
-gravedad = 9.81
-alcance = 0
-altura_max = 0
-seleccion = 0
+
  
 class Lanzamiento:
-
-    def __init__(self,angulo,velocidad,alcance,altura_max):
+    
+    def __init__(self,angulo=0,velocidad=0,gravedad=9.81,alcance=0,altura_max=0):
         self.angulo = angulo
-        self.velocidad = velocidad  
-        self.alcance = alcance
-        self.altura_maxima = altura_max
+        self.velocidad = float(velocidad)
+        self.gravedad = gravedad 
+        self.alcance = float(alcance)
+        self.altura_maxima = float(altura_max)
 
     def get_establecer_angulo(self):
         return self.angulo
 
-
     def set_establecer_angulo(self,angulo):
         self.angulo = angulo
         
-    #get_establecer_angulo()
-
     def get_establecer_velocidad(self):
         return self.velocidad
 
     def set_establecer_velocidad(self,velocidad):
         self.velocidad = velocidad
         
-    #establecer_velocidad() 
-
-    def calculo_alcance(self):
-                
-        angulo_rad=math.radians(self.get_establecer_angulo)
-        alcance=(self.get_establecer_velocidad**2)*math.sin(2*angulo_rad)/gravedad
-        return alcance
-        
-    def calculo_altura(self):
-        
-        angulo_rad=math.radians(self.get_establecer_angulo)
-        altura_max = (self.get_establecer_velocidad**2)*(math.sin(angulo_rad**2)/(2*gravedad))
-        return altura_max
+    def get_calculo_alcance(self):
+        return self.alcance
     
-    #calculo_altura()
+    def set_calculo_alcance(self,alcance):
+        self.alcance = alcance
+        
+    def get_calculo_altura(self):
+        return self.altura_max
+    
+    def set_calculo_altura(self,altura_max):
+        self.altura_max = altura_max
+        
+    def calcular_parametros(self):
+        angulo_rad = math.radians(self.angulo)
+        alcance = round((self.velocidad**2) * math.sin(2*angulo_rad) / self.gravedad,2)
+        altura_max = round((self.velocidad**2) * (math.sin(angulo_rad)**2) / (2*self.gravedad),2)
 
-    def resultado():
-        print(f"La distancia recorrida es de {alcance} con una altura máxima de {altura_max}")
+        self.set_calculo_alcance(alcance)
+        self.set_calculo_altura(altura_max)
+    
+    def resultado(self):
+        print(f"Para un angulo de {self.angulo}º y una velocidad inicial de {self.velocidad} m/s.\nLa distancia recorrida es de {self.alcance} metros con una altura máxima de {self.altura_max} metros.")
 
 def generar_menu():  
-
+    lanzamiento = Lanzamiento()
     while True:
-        print("Menú:")
+        print("\nMenú:\n")
         print("1. Angulo de Lanzamiento")
         print("2. Velocidad de Lanzamiento")
-        print("3. Alcance obtenido")
-        print("4. Altura máxima alcanzada")
-        print("5. Generar informe")
+        print("3. Calcular Parámetros(alcance y altura)")
+        print("4. Generar informe de resultados")
         print("0. Salir")
         seleccion = int(input("Seleccione un número para realizar la acción: "))
-                            
-                
         if seleccion == 1:
             angulo = float(input("Introduzca el ángulo de lanzamiento: "))
-            
+            lanzamiento.set_establecer_angulo(angulo)
         elif seleccion == 2:
             velocidad = float(input("Introduzca la velocidad inicial: "))
-            Lanzamiento(angulo,velocidad)
+            lanzamiento.set_establecer_velocidad(velocidad)
         elif seleccion == 3:
-            Lanzamiento.calculo_alcance()
-            Lanzamiento.calculo_altura()
-            Lanzamiento.resultado()
+            lanzamiento.calcular_parametros()
+            print("Cálculos realizados satisfactoriamente.")
+        elif seleccion == 4:
+            lanzamiento.resultado()
         elif seleccion == 0:
             print(f"Saliendo del programa...")
             sys.exit()
-        
         else:
-            return f"El número elegido no es correcto, intentelo de nuevo"
-    
+            print( f"El número elegido no es correcto, intentelo de nuevo\n\n")
+
 generar_menu()
-
-
-    
