@@ -24,39 +24,65 @@ Hacer un menú que tenga las opciones de establecer los datos, consultarlos y re
 
 (se puede mantener el menú siempre corriendo con un "while True" por ejemplo)'''
 
-resultado = 0
+alcance = 0
+altura_max = 0
 
 class Lanzamiento:
 
     gravedad = 9.81
-    alcance = 0
-    altura_max = 0
     
-
-    def __init__(self,angulo,velocidad):
+    def __init__(self,angulo,velocidad,gravedad,alcance,altura_max,,):
         self.angulo = angulo
         self.velocidad = velocidad  
-
-    def establecer_angulo(self,angulo):
-        self.angulo = angulo
-        angulo = float(input("Introduzca el ángulo de lanzamiento: "))
-
-    def establecer_velocidad(self,velocidad):
-        self.velocidad = velocidad
-        velocidad = float(input("Introduzca la velocidad inicial: "))
-                 
-    def calculo_tiro(self,alcance,altura_max,angulo,velocidad,gravedad):
+        self.gravedad = gravedad
         self.alcance = alcance
-        self.altura_max = altura_max  
+        self.altura_maxima = altura_max
+
+    def establecer_angulo():
+        angulo = float(input("Introduzca el ángulo de lanzamiento: "))
+        return angulo
+    establecer_angulo()
+    def establecer_velocidad():
+        velocidad = float(input("Introduzca la velocidad inicial: "))
+        return velocidad
+    establecer_velocidad()            
+    def calculo_tiro():
+         
         angulo_rad=math.radians(angulo)
         alcance=(velocidad**2)*math.sin(2*angulo_rad)/gravedad
         altura_max = (velocidad**2)*(math.sin(angulo_rad**2)/(2*gravedad))
+        return alcance,altura_max
+    calculo_tiro()
+    def generar_menu():
         
+        while True:
+            seleccion=(int(input("Seleccione un número para realizar la acción: ")))
+            print("Menú:")
+            print("1. Angulo de Lanzamiento")
+            print("2. Velocidad de Lanzamiento")
+            print("3. Alcance y Altura máxima alcanzada")
+            print("0. Salir")
+            
+            return seleccion
+            if  0 < seleccion > 3:
+                print("El número seleccionado no es correcto, vuelva a intentarlo")
+                
+
+    def menu_funcional(self,seleccion,establecer_angulo,establecer_velocidad):
+        self.seleccion = seleccion
+        self.establecer_angulo = establecer_angulo
+        self.establecer_velocidad = establecer_velocidad
         
-        print(f"La distancia recorrida es de {alcance} con una altura máxima de {altura_max}")
+        if seleccion == 1:
+            establecer_angulo()
+        
+        elif seleccion == 2:
+            establecer_velocidad()
+        
+        elif seleccion == 3:
+            print(f"La distancia recorrida es de {alcance} con una altura máxima de {altura_max}")
     
-    resultado = calculo_tiro()
-    print(resultado)
+#generar_menu()
 
 
     
