@@ -62,7 +62,6 @@ class Lanzamiento:
         angulo_rad = math.radians(self.angulo)
         alcance = round((self.velocidad**2) * math.sin(2*angulo_rad) / self.gravedad,2)
         altura_max = round((self.velocidad**2) * (math.sin(angulo_rad)**2) / (2*self.gravedad),2)
-
         self.set_calculo_alcance(alcance)
         self.set_calculo_altura(altura_max)
     
@@ -71,28 +70,35 @@ class Lanzamiento:
 
 def generar_menu():  
     lanzamiento = Lanzamiento()
+
     while True:
-        print("\nMenú:\n")
+        print("\nMenú:\n-----")
         print("1. Angulo de Lanzamiento")
         print("2. Velocidad de Lanzamiento")
         print("3. Calcular Parámetros(alcance y altura)")
         print("4. Generar informe de resultados")
         print("0. Salir")
         seleccion = int(input("Seleccione un número para realizar la acción: "))
+
         if seleccion == 1:
             angulo = float(input("Introduzca el ángulo de lanzamiento: "))
             lanzamiento.set_establecer_angulo(angulo)
+
         elif seleccion == 2:
             velocidad = float(input("Introduzca la velocidad inicial: "))
             lanzamiento.set_establecer_velocidad(velocidad)
+
         elif seleccion == 3:
             lanzamiento.calcular_parametros()
             print("Cálculos realizados satisfactoriamente.")
+
         elif seleccion == 4:
             lanzamiento.resultado()
+
         elif seleccion == 0:
             print(f"Saliendo del programa...")
             sys.exit()
+        
         else:
             print( f"El número elegido no es correcto, intentelo de nuevo\n\n")
 
