@@ -9,12 +9,19 @@ Pero el saldo tenemos que hacer un ingreso o una retirada.
 
 Para modificar el saldo tenemos que hacer un ingreso o una retirada'''
 
-class Cuenta:
+class Banco:
+    
+    def __init__(self):
+        pass
+        self.banco = []
+
+class Cuenta(Banco):
  
     def __init__(self):
         self.num_cuenta = []
         self.cliente = []
         self.saldo = float()
+        self.banco = []
         
     def set_num_cuenta(self,numero):
         self.num_cuenta = numero
@@ -37,9 +44,10 @@ class Cuenta:
     def get_retirar(self):
         return self.retirada
         
-    
 def operaciones():
     cuenta = Cuenta()
+    banco = Banco()
+   
     
     
     while True:
@@ -57,6 +65,7 @@ def operaciones():
             numero = random.randint(1,9999999999)
             cuenta.cliente.append(nombre_cliente)
             cuenta.num_cuenta.append(numero)
+            banco.extend(cuenta)
 
         if operacion == 2:
             ingreso = float(input("Introduzca la cantidad a ingresar: "))
