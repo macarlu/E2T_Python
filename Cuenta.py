@@ -1,4 +1,5 @@
 import random
+import sys
 
 '''
 Crea la clase "Cuenta".
@@ -9,15 +10,12 @@ Pero el saldo tenemos que hacer un ingreso o una retirada.
 Para modificar el saldo tenemos que hacer un ingreso o una retirada'''
 
 class Cuenta:
-    #cliente = ()
-    #clientes = {}
-
+ 
     def __init__(self):
         self.num_cuenta = []
         self.cliente = []
         self.saldo = float()
-        #self.clientes = {}
-
+        
     def set_num_cuenta(self,numero):
         self.num_cuenta = numero
 
@@ -73,6 +71,10 @@ def operaciones():
         
         elif operacion == 5:
             print(f"El numero de cuenta de {nombre_cliente} es {numero}")
+        
+        elif operacion == 6:
+            print(f"Saliendo del programa...")
+            sys.exit()
         
 
 operaciones()
