@@ -9,8 +9,8 @@ Va a tener:
 
 class Profesor:
     
-    def __init__(self,nombre):
-        self.nombre = nombre
+    def __init__(self):
+        self.nombre = " "
         self.asignatura = " "
         self.salario = float()
 
