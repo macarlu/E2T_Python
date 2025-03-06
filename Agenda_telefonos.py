@@ -1,3 +1,4 @@
+import sys
 '''
 Hacer una aplicacion àra tener una agenda de telefonos.
 Crear la clase Agenda.
@@ -13,23 +14,23 @@ Necesitamos los siguientes metodos:
 class Agenda:
 
     def __init__(self):
-        contactos = {"Nombre": " ", "Telefono": int()}
+        contactos ={}
+        contactos[self.set_introducir_contacto] = self.set_introducir_telefono
 
     def set_introducir_contacto(self, nuevocontacto):
         self.set_introducir_contacto = nuevocontacto
-        nuevocontacto = input("Introduzca el nombre en la agenda:")
-        print(f"{self.nuevocontacto} ha sido añadido satisfactoriamente")
-
+   
     def get_introducir_contacto(self):
         return self.get_introducir_contacto
     
     def set_introducir_telefono(self,telefono):
         self.set_introducir_telefono = telefono
-        telefono = int(input("Introduzca el número de telefono en la agenda: "))
-         print(f"El nuevo numero de telefono ha sido añadido satisfactoriamente")
-
+    
     def get_introducir_telefono(self):
         return self.get_introducir_telefono
+    
+    def get_contactocreado(self):
+        return contactos
     
     def set_borrar_contacto(self, borrado):
         self.set_borrar_contacto = borrado
@@ -39,14 +40,44 @@ class Agenda:
     
     def get_buscar_contacto(self):
         return self.get_buscar_contacto
-        
-    def mostrar_Agenda():
+    
+    def mostrar_informacion():
+        pass
+           
+    def mostrar_agenda():
         while True:
             print("\nMenú :")
             print("1. Introducir un nuevo contacto")
-            print("2. Introducir un nuevo contacto")
-            print("1. Introducir un nuevo contacto")
+            print("2. Buscar un contacto")
+            print("3. Borrar un contacto")
+            print("0. Para salir del menú")
+            opcion = int(input("Elige una de las opciones: "))
 
+            if opcion == 1:
+                nuevocontacto = input("Introduzca el nombre en la agenda:")
+                print(f"El nuevo contacto {nuevocontacto} ha sido añadido satisfactoriamente")
+                telefono = int(input("Introduzca el número de telefono en la agenda: "))
+                print("El nuevo numero de telefono ha sido añadido satisfactoriamente")
+        
+            elif opcion == 2:
+                busqueda = input("Introduzca el nombre a buscar en la agenda: ")
+                if busqueda in :
+                
 
+            elif opcion == 3:
+                Agenda.set_borrar_contacto()
+
+            elif opcion == 0:
+                print("Saliendo del programa...")
+                sys.exit()
+
+            else:
+                print("El número elegido no es correcto, pruebe con otro")
+                opcion = int(input("Elige una de las opciones: "))
+            
+            print(contactos)
+        
+    mostrar_agenda()
+                        
         
         

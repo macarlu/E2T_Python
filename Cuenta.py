@@ -9,20 +9,13 @@ Pero el saldo tenemos que hacer un ingreso o una retirada.
 
 Para modificar el saldo tenemos que hacer un ingreso o una retirada'''
 
-class Banco:
-    
-    def __init__(self):
-        pass
-        self.banco = []
-
-class Cuenta(Banco):
+class Cuenta:
  
     def __init__(self):
         self.num_cuenta = []
         self.cliente = []
         self.saldo = float()
-        self.banco = []
-        
+                
     def set_num_cuenta(self,numero):
         self.num_cuenta = numero
 
@@ -45,11 +38,9 @@ class Cuenta(Banco):
         return self.retirada
         
 def operaciones():
+    
     cuenta = Cuenta()
-    banco = Banco()
-   
-    
-    
+        
     while True:
         print("\nMenu:\n-----")
         print("1. Registrese como Cliente")
@@ -82,7 +73,7 @@ def operaciones():
             print(f"El numero de cuenta de {nombre_cliente} es {numero}")
         
         elif operacion == 6:
-            print(f"Saliendo del programa...")
+            print("Saliendo del programa...")
             sys.exit()
         
 
