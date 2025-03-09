@@ -17,62 +17,74 @@ class Agenda:
         pass
         
     def set_introducir_contacto(self):
-        nuevocontacto = input("Introduzca el nombre en la agenda:")
-        print(f"El nuevo contacto {nuevocontacto} ha sido añadido satisfactoriamente")
+        nuevocontacto = input("Introduzca nombre y apellidos del nuevo contacto en la agenda:")
+        contacto = nuevocontacto.title()
+        print(f"El nuevo contacto {contacto} ha sido añadido satisfactoriamente")
         telefono = int(input("Introduzca el número de telefono en la agenda: "))
-        print("El nuevo numero de telefono ha sido añadido satisfactoriamente")
-        contactos[nuevocontacto] = telefono
-   
-    def get_introducir_contacto(self):
-        return self.get_introducir_contacto
-    
-    def set_introducir_telefono(self):
-       
-        return telefono
-    
-    def get_introducir_telefono(self):
-        return self.get_introducir_telefono
-    
-    def get_contactocreado(self):
-        return contactos
-    
-    def set_borrar_contacto(self, borrado):
-        self.set_borrar_contacto = borrado
+        print(f"El numero de telefono ha sido añadido satisfactoriamente")
+        contactos[contacto] = telefono
 
-    def set_buscar_contacto(self, busqueda):
-        self.set_buscar_contacto = busqueda
+    def get_introducir_contacto(self):
+        return self.contacto
+   
+    def set_borrar_contacto(self):
+        borrado = input("Introduzca el contacto a eliminar de la agenda: ")
+        eliminado = borrado.title()
+        if eliminado in contactos:
+            del(contactos[borrado])
+            print(f"El contacto {eliminado} ha sido eliminado satisfactoriamente")
+        else:
+            print(f"{eliminado} no ha sido encontrado en la agenda")
+
+    def set_buscar_contacto(self):
+        busqueda = input("Introduzca el nombre a buscar en la agenda: ")
+        buscado = busqueda.title()
+        if buscado in contactos:
+            print(f"El número de telefono buscado es: {contactos[buscado]}")
+        else:
+            print(f"{buscado} no ha sido encontrado en la agenda")
     
     def get_buscar_contacto(self):
-        return self.get_buscar_contacto
+        return self.buscado
     
-    def mostrar_informacion():
-        pass
+    def set_mostrar_informacion(self):
+        valores = contactos.items()
+        print(f"Estos son tus contacto hasta el momento: {valores}")
            
 def mostrar_agenda():
+    
     while True:
+
         print("\nMenú :")
         print("1. Introducir un nuevo contacto")
         print("2. Buscar un contacto")
         print("3. Borrar un contacto")
+        print("4. Mostrar la agenda al completo")
         print("0. Para salir del menú")
         opcion = int(input("Elige una de las opciones: "))
+        
         if opcion == 1:
-           agenda1.set_introducir_contacto()
-            
-    
+            agenda1.set_introducir_contacto()
+                
         elif opcion == 2:
-            busqueda = input("Introduzca el nombre a buscar en la agenda: ")
-            if busqueda in contactos:
-                print(contactos[busqueda])
+            agenda1.set_buscar_contacto()
+
         elif opcion == 3:
-            Agenda.set_borrar_contacto()
+            agenda1.set_borrar_contacto()
+
+        elif opcion == 4:
+            agenda1.set_mostrar_informacion()
+
         elif opcion == 0:
             print("Saliendo del programa...")
             sys.exit()
+        
         else:
             print("El número elegido no es correcto, pruebe con otro")
             opcion = int(input("Elige una de las opciones: "))
-        print(contactos)
+        
+        #print(contactos)
+
 agenda1 = Agenda()        
            
 mostrar_agenda()
