@@ -10,22 +10,45 @@ Necesitamos los siguientes metodos:
     - Método para buscar un contacto (por nombre)
     - Método para mostrar toda la agenda.
 '''
+contexto = {'amigos':{},'compañeros trabajo':{},'familia':{}}
 contactos ={}
 class Agenda:
     
     def __init__(self):
         pass
         
-    def set_introducir_contacto(self):
-        nuevocontacto = input("Introduzca nombre y apellidos del nuevo contacto en la agenda:")
+    def set_introducir_contacto_amigos(self):
+        nuevocontacto = input("Introduzca nombre del nuevo contacto:")
         contacto = nuevocontacto.title()
-        print(f"El nuevo contacto {contacto} ha sido añadido satisfactoriamente")
         telefono = int(input("Introduzca el número de telefono en la agenda: "))
-        print(f"El numero de telefono ha sido añadido satisfactoriamente")
         contactos[contacto] = telefono
+        contexto['amigos'] = (contacto,telefono)
+        print(f"{contacto} ha sido añadido dentro del grupo de amigos.")
 
-    def get_introducir_contacto(self):
-        return self.contacto
+    def set_introducir_contacto_compañeros(self):
+        nuevocontacto = input("Introduzca nombre del nuevo contacto:")
+        contacto = nuevocontacto.title()
+        telefono = int(input("Introduzca el número de telefono en la agenda: "))
+        contactos[contacto] = telefono
+        contexto['compañeros trabajo'] = (contacto,telefono)
+        print(f"{contacto} ha sido añadido dentro del grupo de compañeros trabajo.")
+
+    def set_introducir_contacto_familia(self):
+        nuevocontacto = input("Introduzca nombre del nuevo contacto:")
+        contacto = nuevocontacto.title()
+        telefono = int(input("Introduzca el número de telefono en la agenda: "))
+        contactos[contacto] = telefono
+        contexto['familia'] = (contacto,telefono)
+        print(f"{contacto} ha sido añadido dentro del grupo de familia.")
+
+    def get_introducir_contacto_amigos(self):
+        return self.contexto
+    
+    def get_introducir_contacto_compañeros(self):
+        return self.contexto
+    
+    def get_introducir_contacto_familia(self):
+        return self.contexto
    
     def set_borrar_contacto(self):
         borrado = input("Introduzca el contacto a eliminar de la agenda: ")
@@ -64,7 +87,20 @@ def mostrar_agenda():
         opcion = int(input("Elige una de las opciones: "))
         
         if opcion == 1:
-            agenda1.set_introducir_contacto()
+            print("\nMenú :")
+            print("1. Agrupar nuevo contacto como amigo")
+            print("2. Agrupar nuevo contacto como compañeros trabajo")
+            print("3. Agrupar nuevo contacto como familia")
+            opcion = int(input("Elige una de las opciones: "))
+            
+            if opcion == 1:
+                agenda1.set_introducir_contacto_amigos()
+            
+            elif opcion == 2:
+                agenda1.set_introducir_contacto_compañeros()
+
+            elif opcion == 3:
+                agenda1.set_introducir_contacto_familia()
                 
         elif opcion == 2:
             agenda1.set_buscar_contacto()
@@ -73,6 +109,13 @@ def mostrar_agenda():
             agenda1.set_borrar_contacto()
 
         elif opcion == 4:
+            print("\nMenú :")
+            print("1. Mostrar contactos existentes como amigos")
+            print("2. Mostrar contactos existentes como compañeros trabajo")
+            print("3. Mostrar contactos existentes como familia")
+            print("4. Mostrar total de contactos existentes")
+            opcion = int(input("Elige una de las opciones: "))
+            
             agenda1.set_mostrar_informacion()
 
         elif opcion == 0:
@@ -84,6 +127,7 @@ def mostrar_agenda():
             opcion = int(input("Elige una de las opciones: "))
         
         #print(contactos)
+        print(contexto)
 
 agenda1 = Agenda()        
            
