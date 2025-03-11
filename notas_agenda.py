@@ -6,15 +6,15 @@
         contactos[nuevocontacto] = telefono
 
     print(contactos)
-insertardiccionario()
+insertardiccionario()'''
 
 def buscardiccionario():
     contactos = {'juanma': 605028411, 'maria': 605028412, 'carlota': 605028413, 'lucia':605028414}
     if 'juanma' in contactos:
         print(contactos['juanma'])
         
-buscardiccionario()'''
-
+buscardiccionario()
+'''
 contexto = {'amigos':{},'compañeros trabajo':{},'familia':{}}
 contactos = {}
 
@@ -57,4 +57,4 @@ def agrupar_contacto():
 
             print(contexto)
             print(contactos)
-agrupar_contacto()
+agrupar_contacto()'''

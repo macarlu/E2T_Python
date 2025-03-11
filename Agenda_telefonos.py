@@ -22,7 +22,7 @@ class Agenda:
         contacto = nuevocontacto.title()
         telefono = int(input("Introduzca el número de telefono en la agenda: "))
         contactos[contacto] = telefono
-        contexto['amigos'] = (contacto,telefono)
+        contexto['amigos'][contacto] = telefono
         print(f"{contacto} ha sido añadido dentro del grupo de amigos.")
 
     def set_introducir_contacto_compañeros(self):
@@ -30,7 +30,7 @@ class Agenda:
         contacto = nuevocontacto.title()
         telefono = int(input("Introduzca el número de telefono en la agenda: "))
         contactos[contacto] = telefono
-        contexto['compañeros trabajo'] = (contacto,telefono)
+        contexto['compañeros trabajo'][contacto] = telefono
         print(f"{contacto} ha sido añadido dentro del grupo de compañeros trabajo.")
 
     def set_introducir_contacto_familia(self):
@@ -38,7 +38,7 @@ class Agenda:
         contacto = nuevocontacto.title()
         telefono = int(input("Introduzca el número de telefono en la agenda: "))
         contactos[contacto] = telefono
-        contexto['familia'] = (contacto,telefono)
+        contexto['familia'][contacto] = telefono
         print(f"{contacto} ha sido añadido dentro del grupo de familia.")
 
     def get_introducir_contacto_amigos(self):
@@ -54,7 +54,10 @@ class Agenda:
         borrado = input("Introduzca el contacto a eliminar de la agenda: ")
         eliminado = borrado.title()
         if eliminado in contactos:
-            del(contactos[borrado])
+            del contactos[eliminado]
+            for categoria in contexto:
+                if eliminado in contexto[categoria]:
+                    del contexto[categoria][eliminado]
             print(f"El contacto {eliminado} ha sido eliminado satisfactoriamente")
         else:
             print(f"{eliminado} no ha sido encontrado en la agenda")
@@ -70,9 +73,23 @@ class Agenda:
     def get_buscar_contacto(self):
         return self.buscado
     
-    def set_mostrar_informacion(self):
+    def set_mostrar_informacion_amigos(self):
+        print("Estos son tus contactos de amigos:")
+        for nombre, telefono in contexto["amigos"].items():
+            print(f"Nombre: {nombre} - Teléfono: {telefono}")
+    def set_mostrar_informacion_compañeros(self):
+        print("Estos son tus contactos de compañeros de trabajo:")
+        for nombre, telefono in contexto["compañeros trabajo"].items():
+            print(f"Nombre: {nombre} - Teléfono: {telefono}")
+
+    def set_mostrar_informacion_familia(self):
+        print("Estos son tus contactos de familia:")
+        for nombre, telefono in contexto["familia"].items():
+            print(f"Nombre: {nombre} - Teléfono: {telefono}")
+
+    def set_mostrar_informacion_total(self):
         valores = contactos.items()
-        print(f"Estos son tus contacto hasta el momento: {valores}")
+        print(f"Estos son todos tus contacto hasta el momento: {valores}")
            
 def mostrar_agenda():
     
@@ -80,7 +97,7 @@ def mostrar_agenda():
 
         print("\nMenú :")
         print("1. Introducir un nuevo contacto")
-        print("2. Buscar un contacto")
+        print("2. Buscar el telefono de un contacto")
         print("3. Borrar un contacto")
         print("4. Mostrar la agenda al completo")
         print("0. Para salir del menú")
@@ -89,7 +106,7 @@ def mostrar_agenda():
         if opcion == 1:
             print("\nMenú :")
             print("1. Agrupar nuevo contacto como amigo")
-            print("2. Agrupar nuevo contacto como compañeros trabajo")
+            print("2. Agrupar nuevo contacto como compañero de trabajo")
             print("3. Agrupar nuevo contacto como familia")
             opcion = int(input("Elige una de las opciones: "))
             
@@ -116,7 +133,17 @@ def mostrar_agenda():
             print("4. Mostrar total de contactos existentes")
             opcion = int(input("Elige una de las opciones: "))
             
-            agenda1.set_mostrar_informacion()
+            if opcion == 1:
+                agenda1.set_mostrar_informacion_amigos()
+            
+            elif opcion == 2:
+                agenda1.set_introducir_contacto_compañeros()
+
+            elif opcion == 3:
+                agenda1.set_mostrar_informacion_familia()
+
+            elif opcion == 4:
+                agenda1.set_mostrar_informacion_total()
 
         elif opcion == 0:
             print("Saliendo del programa...")
@@ -130,8 +157,10 @@ def mostrar_agenda():
         print(contexto)
 
 agenda1 = Agenda()        
-           
+      
 mostrar_agenda()
-                      
+
+
+
         
         
