@@ -1,16 +1,6 @@
 {
-    "contactos" : [
-        {
-            "nombre" : "Antonio",
-            "telefono" : 123456789,
-            "militar": true,
-            "mail" : "antonio@gmail.com"
-        },
-        {
-            "nombre" : "Carlos",
-            "telefono" : 987654321,
-            "militar": false,
-            "mail" : "carlos@gmail.com"  
-        }
-    ]
+    "Antonio": {
+        "telefono":123456789,
+        "email":"antonio@mail.com"
+    }
 }
