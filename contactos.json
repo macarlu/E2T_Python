@@ -1,6 +1,10 @@
 {
-    "Antonio": {
-        "telefono":123456789,
-        "email":"antonio@mail.com"
+    "Paco Valle": {
+        "telefono": 622458871,
+        "email": "valle@mail.com"
+    },
+    "Juan Manuel Gomez": {
+        "telefono": 605028411,
+        "email": "juanma1999@gmail.com"
     }
 }
