@@ -136,3 +136,6 @@ def mostrar_menu(): #Muestra el menú principal y permite al usuario interactuar
             
 agenda_test = Agenda()
 mostrar_menu()
+
+if __name__ == "__main__":
+    mostrar_menu()

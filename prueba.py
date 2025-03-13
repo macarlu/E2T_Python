@@ -1,3 +1,5 @@
+
+
 '''
 def tabla_multiplicar():
     num= int(input("inserte un número: "))
