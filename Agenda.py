@@ -15,57 +15,17 @@ class Agenda:
     def cargar_contactos(self):
     #Carga los contactos desde el archivo JSON si existe, de lo contrario, devuelve un diccionario vacío.
         
-        try:
-            if os.path.exists(self.archivo):
-                with open(self.archivo, "r") as f:
-                    return json.load(f)
-            else:
-                return {}
-        except Exception as e:
-            print(f"Se ha producido el error: {e} al cargar los datos del programa.")
+        if os.path.exists(self.archivo):
+            with open(self.archivo, "r") as f:
+                return json.load(f)
+        else:
             return {}
         
     def introducir_contacto(self):#Permite al usuario introducir un nuevo contacto en la agenda.
         contacto = str.title(input("Introduzca nombre y apellidos del nuevo contacto:"))
-        
-        try:#Permite asegurar que el número sea de 9 números y solo números.
-            tfno = int(input("Introduzca el número de telefono en la agenda: "))
-            contador =len(str(tfno))
-            
-            if contador != 9:
-                print("El número introducido no es correcto, debe tener 9 dígitos.")
-                tfno = int(input("Introduzca el número de telefono en la agenda: "))
-        except ValueError:
-            print("El número introducido no es correcto, debe introducir solamente números.")
-            try:
-                tfno = int(input("Introduzca el número de telefono en la agenda: "))
-                contador =len(str(tfno))
-                if contador != 9:
-                    print("El número introducido no es correcto, debe tener 9 dígitos.")
-                    tfno = int(input("Introduzca el número de telefono en la agenda: "))
-            except Exception:
-                print("Se ha producido un error, comience de nuevo")
-                agenda_test.introducir_contacto()
-
-        try:
-            email = input("Introduzca la direccion de correo electronico: ")
-            mail = email.lower()
-            arroba = mail.index("@")
-            puntocom = mail.index(".com")
-    
-        except ValueError:
-            print("La dirección de correo no es válida")
-            
-        try:
-            email = input("Introduzca la direccion de correo electronico: ")
-            mail = email.lower()
-            arroba = mail.index("@")
-            puntocom = mail.index(".com")
-            
-        except ValueError:
-            print("Se ha producido un error, comience de nuevo")
-            agenda_test.introducir_contacto()
-        
+        tfno = int(input("Introduzca el número de telefono en la agenda: "))
+        email = input("Introduzca la direccion de correo electronico: ")
+        mail = email.lower()
         self.contactos[contacto] = {'telefono': tfno, 'email': mail}
         print(f"{contacto} ha sido añadido correctamente a la agenda.")
         
@@ -116,6 +76,8 @@ class Agenda:
                     return
         else:
             print(f"{cambio} no ha sido encontrado en la agenda")
+
+        #self.contactos.pop(cambio)
 
     def borrar_contacto(self):#Elimina un contacto de la agenda si existe.
         borrado = str.title(input("Introduzca el contacto a borrar: "))
