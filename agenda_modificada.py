@@ -35,8 +35,10 @@ class Agenda:
             if contador != 9:
                 print("El número introducido no es correcto, debe tener 9 dígitos.")
                 tfno = int(input("Introduzca el número de telefono en la agenda: "))
+                
         except ValueError:
             print("El número introducido no es correcto, debe introducir solamente números.")
+            
             try:
                 tfno = int(input("Introduzca el número de telefono en la agenda: "))
                 contador =len(str(tfno))
