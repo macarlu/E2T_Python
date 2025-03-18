@@ -7,18 +7,16 @@ Incluye un método que devuelva solo los números pares de esa lista.
 
 
 class Numeros:
-    
+    lista = [12,15,21,26,29,34,37,41,43,46,58,62,74,79,86]
     def __init__(self):
-       self.lista = lista
+       pass
         
     def pares(self):
-        par = []
+       
         for n in self.lista:
             if n % 2 == 0:
-                par.append(self.lista)
-        print(par)
-
-         
+                print(n)
+       
 numero_par = Numeros()
 
 numero_par.pares()

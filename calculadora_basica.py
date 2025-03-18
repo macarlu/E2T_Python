@@ -5,29 +5,30 @@ Incluye un constructor que inicialice los dos números como atributos.
 """
     
 class Calculadora:
-    
-    def __init__(self):
-        self.a = float(input("Intoduce el primer número: "))
-        self.b = float(input("Intoduce el segundo número: "))
+   
+    def __init__(self,a = None, b = None):
+        pass
+        self.a = a
+        self.b = b
         
     def suma(self):
         return (self.a + self.b)
         
     def resta(self):
-        return(self.a - self.b)
+        return (self.a - self.b)
     
     def multiplicacion(self):
-        return(self.a * self.b)
+        return round((self.a * self.b),2)
     
     def division(self):
-        return(self.a / self.b)
+        return round((self.a / self.b),2)
 
-calculo1 = Calculadora()
+calculo1 = Calculadora()   
 
-def calcular():
-    
+'''def calcular():
+
     operacion = input("Introduce la operacion a realizar: ")
-    
+
     if operacion == "suma":
         print(calculo1.suma())
     elif operacion == "resta":
@@ -36,8 +37,11 @@ def calcular():
         print(calculo1.multiplicacion())
     elif operacion == "division":
         print(calculo1.division())
+
+ 
        
-calcular()
+calcular()'''
 
 if __name__ == "__main__":
-    calcular()
+    Calculadora()
+    #calcular()
