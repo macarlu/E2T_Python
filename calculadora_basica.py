@@ -34,7 +34,10 @@ def calcular():
         print(calculo1.resta())
     elif operacion == "multiplicacion":
         print(calculo1.multiplicacion())
-    if operacion == "division":
+    elif operacion == "division":
         print(calculo1.division())
-            
+       
 calcular()
+
+if __name__ == "__main__":
+    calcular()
