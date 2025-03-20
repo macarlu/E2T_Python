@@ -1,3 +1,4 @@
+import sys
 '''
 Ejercicio 4: Conversor de temperaturas
 Diseña una clase ConversorTemperatura con métodos para convertir de Celsius a Fahrenheit y viceversa.
@@ -7,31 +8,32 @@ class ConversorTemperatura:
     
        
     def __init__(self):
-        self.temperatura = input("Introduzca la temperatura a convertir: ")
+        self.temperatura = float(input("Introduzca la temperatura a convertir: "))
             
     def Celsius_Farenheit(self):
-        print((self.temperatura * 1.8) + 32)
+        resultado = round(((self.temperatura * 1.8) + 32),2)
+        print(resultado)
         
           
     def Farenheit_Celsius(self):
-        print((self.temperatura -32) / 1.8)
-        
+        resultado = round(((self.temperatura -32) / 1.8),2)
+        print(resultado)
     
     def Celsius_Kelvin(self):
-       print(self.temperatura + 273.15)
-        
+        resultado = round((self.temperatura + 273.15),2)
+        print(resultado)
         
     def Kelvin_Celsius(self):
-        print(self.temperatura - 273.15)
-      
+        resultado = round((self.temperatura - 273.15),2)
+        print(resultado)
         
     def Farenheit_Kelvin(self):
-        print((self.temperatura + 459.67) * 5/9)
-        
+        resultado = round(((self.temperatura + 459.67) * 5/9),2)
+        print(resultado)
         
     def Kelvin_Farenheit(self):
-        print((self.temperatura * 9/5) - 459.67)
-        
+        resultado = round(((self.temperatura * 9/5) - 459.67),2)
+        print(resultado)
         
 def conversion():
     while True:
@@ -42,26 +44,34 @@ def conversion():
         print("4. Cambiar de Kelvin a Celsius")
         print("5. Cambiar de Farenheit a Kelvin")
         print("6. Cambiar de Kelvin a Farenheit")
+        print("7. Elegir una nueva temperatura")
+        print("0. Salir del programa")
         opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
-            temperatura1.Celsius_Farenheit
-            break
+            temperatura1.Celsius_Farenheit()
+           
         elif opcion ==  "2":
-            temperatura1.Farenheit_Celsius
-            break
+            temperatura1.Farenheit_Celsius()
+           
         elif opcion ==  "3":
-            temperatura1.Celsius_Kelvin
-            break
+            temperatura1.Celsius_Kelvin()
+           
         elif opcion ==  "4":
-            temperatura1.Kelvin_Celsius
-            break
+            temperatura1.Kelvin_Celsius()
+           
         elif opcion ==  "5":
-            temperatura1.Farenheit_Kelvin
-            break
+            temperatura1.Farenheit_Kelvin()
+            
         elif opcion == "6":
-            temperatura1.Kelvin_Farenheit
-            break
+            temperatura1.Kelvin_Farenheit()
+            
+        elif opcion == "7":
+            ConversorTemperatura()
+            
+        elif opcion == "0":
+            print("Sliendo del programa...")
+            sys.exit()
             
 temperatura1 = ConversorTemperatura()
 
