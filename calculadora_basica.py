@@ -1,12 +1,12 @@
 """
-Calculadora básica con clases
+Ejercicio1. Calculadora básica con clases
 Crea una clase Calculadora que tenga métodos para sumar, restar, multiplicar y dividir dos números
 Incluye un constructor que inicialice los dos números como atributos.
 """
     
 class Calculadora:
    
-    def __init__(self,a = None, b = None):
+    def __init__(self, = None, b = None):
         pass
         self.a = a
         self.b = b
