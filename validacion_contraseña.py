@@ -6,34 +6,37 @@ Incluye un método que verifique si la contraseña tiene al menos 8 caracteres, 
 
 class Validador:
 
-    def __init__(self):
-        self.password = input("Introduzca la contraseña a validar: ")
+    def __init__(self, password = None):
+        self.password = password 
 
     def verificar(self):
-            
-        while True:
         
-            if len(self.password) <= 7:
-                print("La contraseña es demasiado corta, vuelva a intentarlo")
-                contraseña1.verificar()
-            elif self.password.isdigit(): 
-                print("La contraseña debe contener letras  numeros, vuelva a intentarlo ")
-                Validador()
+        while True:
             
-            for l in self.password:
+            self.password =input("Introduzca la contraseña a validar: ")
+            longitud = len(self.password)
+            numeros = any(char.isdigit() for char in self.password)
+            mayusculas = any(char.isupper() for char in self.password)
+            
+            if longitud > 7:
+               
+               
+                
+                if numeros:  
 
-                if not any l.islower():
-                    print("La contraseña debe contener mayusculas y minusculas, vuelva a intentarlo")
-                    contraseña1.verificar()
+                    if  mayusculas:
+                        print("La contraseña es válida")
+                        break
+                    else:
+                        print("La contraseña debe tener mayúsculas y minúsculas, vuelva a intentarlo")
 
-                elif not any l.isupper():
-                    print("La contraseña debe contener mayusculas y minusculas, vuelva a intentarlo")
-                    contraseña1.verificar()
-
+                else:
+                    print("La contraseña debe tener al menos 1 numero, vuelva a intentarlo")
+                    
             else:
-                print("La contraseña introducida es válida")
-                break
-
+                print("La contraseña es demasiado corta, debe tener al menos 8 caracteres contener numeros, intentelo de nuevo")
+                
+        
 contraseña1 = Validador()
 
 contraseña1.verificar()
