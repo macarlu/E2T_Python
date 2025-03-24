@@ -1,3 +1,52 @@
 [
-    
+    {
+        "nombre": "Carla Alejo",
+        "edad": 34,
+        "calificacion": 4
+    },
+    {
+        "nombre": "Javier Vazquez",
+        "edad": 30,
+        "calificacion": 2
+    },
+    {
+        "nombre": "Juan Garcia",
+        "edad": 33,
+        "calificacion": 9
+    },
+    {
+        "nombre": "Mara Cano",
+        "edad": 32,
+        "calificacion": 7
+    },
+    {
+        "nombre": "Jesus Lemos",
+        "edad": 28,
+        "calificacion": 3
+    },
+    {
+        "nombre": "Antonio Mora",
+        "edad": 25,
+        "calificacion": 4
+    },
+    {
+        "nombre": "Ana Rodriguez",
+        "edad": 35,
+        "calificacion": 6
+    },
+    {
+        "nombre": "Maria Lopez",
+        "edad": 25,
+        "calificacion": 3
+    },
+    {
+        "nombre": "Martina Besada",
+        "edad": 21,
+        "calificacion": 10
+    },
+    {
+        "nombre": "Raul Mira",
+        "edad": 18,
+        "calificacion": 9
+    }
 ]

@@ -18,7 +18,7 @@ if longitud >= 8:
     else:
         print("La contraseña debe tener numeros")
         
-        
+ 
    
 else:
     print("La contraseña es demasiado corta, debe tener al menos 8 caracteres contener numeros, intentelo de nuevo")
