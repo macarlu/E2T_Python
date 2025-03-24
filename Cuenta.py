@@ -1,5 +1,5 @@
 import random
-import sys
+
 
 '''
 Crea la clase "Cuenta".

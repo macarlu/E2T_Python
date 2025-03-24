@@ -7,33 +7,35 @@ EXTRA: Añade un selector de tipos de dados (d2, d4, d6, d8, d10, d12, d20)
 '''
 class Dado:
     
-    tirada = []
-    
+    ronda=[]
     def ___init__(self):
         pass
-    
+
     def tirar_dado(self):
-        n = 0
-        n += 1
-        while n < self.tipo_tirada:
+
+        while self.tipo > 0:
+            self.tipo -= 1
             self.puntuacion = random.randint(1,6)
-            self.tirada.append(self.puntuacion)
+            self.ronda.append(self.puntuacion)
+        print(self.ronda)
             
-            print(self.tirada)
-            
-    
     def mostrar_resultado(self):
         
-        resultado = 0
-        for num in self.tirada:
-            resutado += num
-            
-            print(f"El valor obtenido ha sido de: {resultado}")
+        print(f"El valor obtenido ha sido de: {sum(self.ronda)}")
         
             
     def selector_dados(self):
-        self.tipo_tirada = int(input("Elige el número de dados a tirar 2, 4, 6, 8, 10, 12, 20: "))
-        dado1.tirar_dado()
+
+        try:
+            self.tipo = int(input("Elige el número de dados a tirar 2, 4, 6, 8, 10, 12, 20: "))
+            dado1.tirar_dado()
+        except ValueError:
+            print("Debe introducir un número entero")
+            dado1.selector_dados()
+            if self.tipo > 20 or self.tipo < 2:
+                print("El número introducido no está entre los números dados.")
+                dado1.selector_dados()
+
     
 dado1 = Dado()
 dado1.selector_dados()
