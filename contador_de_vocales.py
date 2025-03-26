@@ -6,13 +6,32 @@ Implementa un método que cuente cuántas vocales (a, e, i, o, u) hay en el text
 class AnalizadorTexto:
     
     def __init__(self):
-        pass
+        self.vocales_encontradas = []
     
-    def separapalabras(self, texto):
+    def contar_vocales(self):
         self.texto = input("Introduce el texto donde se quiere buscar: ")
-        self.separador_palabras = texto.split()
-        
-    def separaletras(self):
-        self.separador_letras = self.separador_palabras.split()
-        
-        
+        self.vocales = ("A", "a", "E", "e", "I", "i", "O", "o", "U", "u")
+        for vocal in self.texto:
+            if vocal == "A" or vocal == "a":
+                self.vocales_encontradas.append(vocal)
+                       
+            elif vocal == "E" or vocal == "e":
+                self.vocales_encontradas.append(vocal)
+                        
+            elif vocal == "I" or vocal =="i":
+                self.vocales_encontradas.append(vocal)
+                
+            elif vocal == "O" or vocal == "o":
+                self.vocales_encontradas.append(vocal)
+                
+            elif vocal == "U" or vocal == "u":
+                self.vocales_encontradas.append(vocal)
+                            
+    def mostrar_resultado(self):
+        self.contar_vocales()
+        resultado = len(self.vocales_encontradas)
+        print(self.vocales_encontradas)
+        print(f"El total de vocales encontradas es de: {resultado}")
+            
+texto1 = AnalizadorTexto()
+texto1.mostrar_resultado()
