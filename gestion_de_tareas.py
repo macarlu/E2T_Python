@@ -32,4 +32,21 @@ class Tarea:
     def eliminar_tarea(self):
         self.delete = input("Introduzca la tarea que quiere borrar: ")
         self.tareas.pop(self.delete)
-        
+    
+    def marcar_como_completada(self):
+        self.marcar = input("Introduzca la tarea que quiere marcar como completada: ")
+        self.tareas[self.marcar]['Estado'] = "Tarea completada"
+
+    def listar_tareas(self):
+        if self.tareas:
+            for nombre, info in self.tareas.items:
+                print(f"El nombre de la tarea es: {self.titulo}")
+                print(f"Su descripcion es: {self.descripcion}")
+                print(f"Se encuentra en: {self.completada}")
+        else:
+            print("No hay tareas registradas")
+    
+    def menu():
+        while True:
+            print("\n_________Menú________\n")
+            print("1. ")

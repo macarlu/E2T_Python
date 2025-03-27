@@ -49,6 +49,8 @@ class CuentaBancaria:
                 if opcion == 1:
                     try:
                         reintegro = int(input("Introduzca la cantidad a retirar: "))
+                        if reintegro < 0:
+                            raise ValueError("El reintegro no puede ser negativo")
                         self.retirar(reintegro)
                     except ValueError:
                         print("Debe introducir un número")
