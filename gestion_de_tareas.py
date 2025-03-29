@@ -14,39 +14,86 @@ class Tarea:
         self.tareas = self.cargar_tareas()
     
     def cargar_tareas(self):
+        
         if os.path.exists(self.archivo):
-            with open(self.archivo,"r") as f:
-                return json.loads(f)
-        else:
-            return {}
+            try:
+                with open(self.archivo,"r") as f:
+                    return json.load(f)
+            except (json.JSONDecodeError, IOError):
+                return {}  # Si hay un error, devuelve un diccionario vacío
+            else:
+                return {}
         
     def anadir_tarea(self):
-        self.titulo = input("Introduzca el nombre de la tarea: ")
-        self.descripcion = input("Introduzca las descripcion de la tarea: ")
+        self.titulo.capitalize() = input("Introduzca el nombre de la tarea: ")
+        self.descripcion.capitalize() = input("Introduzca las descripcion de la tarea: ")
+        self.descripcion = self.descripcion
         self.completada = "No completada"  
-        self.tareas = {
+        self.tareas[self.titulo] = {
             "Description" : self.descripcion,
             "Estado" : self.completada
         }
-        
+        self.guardar_tareas()  # Guarda automáticamente después de añadir
+
     def eliminar_tarea(self):
-        self.delete = input("Introduzca la tarea que quiere borrar: ")
-        self.tareas.pop(self.delete)
+        self.delete.capitalize() = input("Introduzca la tarea que quiere borrar: ")
+        if self.delete in self.tareas:
+            self.tareas.pop(self.delete)
+            print(f"Tarea {self.delete} eliminada correctamente")
+        else:
+            print(f"La tarea {self.delete} no existe")
     
     def marcar_como_completada(self):
         self.marcar = input("Introduzca la tarea que quiere marcar como completada: ")
-        self.tareas[self.marcar]['Estado'] = "Tarea completada"
+        if self.marcar in self.tareas:
+            self.tareas[self.marcar]['Estado'] = "Tarea completada"
+            print(f"Tarea {self.marcar} marcada como completada")
+        else:
+            print(f"La tarea {self.marcar} no existe")
 
     def listar_tareas(self):
-        if self.tareas:
-            for nombre, info in self.tareas.items:
-                print(f"El nombre de la tarea es: {self.titulo}")
-                print(f"Su descripcion es: {self.descripcion}")
-                print(f"Se encuentra en: {self.completada}")
-        else:
-            print("No hay tareas registradas")
+        try:
+            if self.tareas:
+                for clave, valor in self.tareas.items():
+                    print(f"El nombre de la tarea es: {clave}")
+                    print(f"Su descripcion es: {valor['Description']}")
+                    print(f"Se encuentra en: {valor['Estado']}")
+                else:
+                    print("No hay tareas registradas")
+        except AttributeError:
+            print(f"Primero haga las modificaciones")
+            menu()
+        
+        except KeyError:
+            print("no se ha encontrado esa tarea, pruebe de nuevo")
+            menu()
+
+    def guardar_tareas(self):#Guarda las tareas en un archivo JSON.
+        with open(self.archivo, "w") as f:
+            json.dump(self.tareas, f, indent=4)
+            return f"Tareas guardadas correctamente"
     
-    def menu():
-        while True:
-            print("\n_________Menú________\n")
-            print("1. ")
+def menu():
+    while True:
+        print("\n_________Menú________\n")
+        print("1. Añadir tarea")
+        print("2. Eliminar tarea")
+        print("3. Marcar tarea como completada")
+        print("4. Listar tarea")
+        print("0. Salir")
+        opcion = input("Introduzca la opcion elegida: ")
+        if opcion == "1":
+            tarea1.anadir_tarea()
+        if opcion == "2":
+            tarea1.eliminar_tarea()
+        if opcion == "3":
+            tarea1.marcar_como_completada()
+        if opcion == "4":
+            tarea1.listar_tareas()
+        if opcion == "0":
+            print("Saliendo del programa...")
+            tarea1.guardar_tareas()
+            break
+
+tarea1 = Tarea()
+menu()
